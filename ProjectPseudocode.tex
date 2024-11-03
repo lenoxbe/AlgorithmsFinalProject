@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{letterpaper, margin=1in}
+
+\begin{document}
+
+\begin{algorithm}[H]
+\caption{$GirvanNewman(G, modBound)$}
+\KwIn{Graph $G$ -- an undirected graph, Float $modBound$ -- a bound for the modularity so the algorithm knows when it is complete}
+\KwOut{An undirected graph composed of all vertices and some edges of G, likely with more connected components representing communities.}
+
+$G2 \gets copy(G)$\;
+$connectedComponents \gets DetectConnectedComponents(G, G.edges)$\;
+\While{$Modularity(G, connectedComponents) < modBound$}{
+    $betweennessCentrality \gets CalculateEdgeBetweennessCentrality(G2)$\;
+    $maxEdge \gets $ edge with max betweenness centrality in $G2$\;
+    Remove $maxEdge$ from $G2$\;
+    \ForEach{$nodeSet \in connectedComponents$}{
+    	\If{$maxEdge.node1 \in nodeSet$}{
+		$currComponent \gets nodeSet$\;
+		break\;
+	}
+    }
+    $newComponents \gets DetectConnectedComponents(G, currComponent)$\;
+    \If{$newComponents.length == 2$}{
+    Remove $currComponent$ from $connectedComponents$\;
+    Add $newComponents$ to $connectedComponents$\;
+    }
+}
+
+\Return{$G2$}\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{$DetectConnectedComponents(G, allNodes)$}
+\KwIn{Graph $G$ -- an undirected graph, Node Set $allNodes$ -- a set of nodes of G to split into sets of nodes representing connected components}
+\KwOut{A list of sets of nodes in G, each set representing one connected component}
+
+$components \gets $ empty list\;
+\While{$allNodes$ is not empty}{
+	$visited \gets $ empty set\;
+	$stack \gets $ arbitrary element removed from $allNodes$ inserted into an empty stack\;
+	\While{$stack$ is not empty}{
+		$currNode \gets stack.pop()$\;
+		add $currNode$ to $visited$\;
+		Remove $currNode$ from $allNodes$\;
+		\ForEach{Node $n$ adjacent to $currNode$ in $G$}{
+			\If{$n$ is not in $stack$ and $n$ is not in $visited$}{
+				$stack.push(n)$\;
+			}
+		}
+	}
+	append $visited$ to $components$\;
+}
+\Return{$components$}\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{$Modularity(G, components)$}
+\KwIn{Graph $G$ -- an undirected graph, List of Sets $components$ -- a list of sets of nodes representing the communities to use for G in the modularity calculation}
+\KwOut{Integer -- the modularity of G}
+
+$sum \gets 0$\;
+$m \gets $ number of edges in $G$\;
+\ForEach{Node $n1$ in $G.nodes$}{
+	\ForEach{Node $n2$ in $G.nodes$}{
+		\If{$n1$ is in the same component as $n2$}{
+			$A \gets $ 1 if $G$ has edge ($n1$, $n2$)\;
+			$d1 \gets $ degree of $n1$\;
+			$d2 \gets $ degree of $n2$\;
+			$sum \gets sum + A - ((d1 * d2) / (2 * m))$\;
+		}
+	}
+}
+\Return{$sum / (2 * m)$}\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{CalculateEdgeBetweennessCentrality(G)}
+\KwIn{Graph $G$ -- an undirected graph}
+\KwOut{Dictionary containing the the edges and their related betweenness centrality value}
+
+$EBC \gets $ empty dictionary\;
+\ForEach{Edge $e$ in $G.edges$}{
+	$EBC[e] \gets 0$\;
+}
+\ForEach{Node $n$ in $G.nodes$}{
+	$distanceDict \gets $ new Dictionary\;
+	$distanceDict[n] \gets 0$\;
+	$queue \gets $ new Queue\;
+	$queue.enqueue(n)$\;
+	$visited \gets $ empty set\;
+	\While{$queue$ is not empty}{
+		$currNode \gets queue.dequeue()$\;
+		add $currNode$ to $visited$\;
+		\ForEach{Node $u$ adjacent to $currNode$ in $G$}{
+			\If{$u$ not in $visited$ and $u$ not in $queue$}{
+				$distanceDict[u] \gets distanceDict[currNode] + 1$\;
+				$queue.enqueue(u)$\;
+			}
+		}
+	}
+	$numShortestPaths \gets $ new Dictionary\;
+	\ForEach{Node $u$ in $G.nodes$}{
+		$numShortestPaths[u] \gets 0$\;
+	}
+	$numShortestPaths[n] \gets 1$\;
+	$visited \gets $ empty set\;
+	$distances \gets $ sort list of (key, value) pairs in $distanceDict$ by value\;
+	\ForEach{($key$, $d$) in $distances$}{
+		\ForEach{Node $pred$ adjacent to $key$ in $G$}{
+			\If{distanceDict[pred] == $d$ - 1}{
+				$numShortestPaths[key] \gets numShortestPaths[key] + numShortestPaths[pred]$\;
+			}
+		}
+	}
+	$edgeWeights \gets $new Dictionary\;
+	\ForEach{Edge $e$ in $G$}{
+		$edgeWeights[e] \gets 0$\;
+	}
+	\ForEach{($key$, $d$) in $distances$}{
+		$sumIncoming \gets 0$\;
+		\ForEach{Node $succ$ adjacent to $key$ in $G$}{
+			\If{$distanceDict[succ] == d + 1$}{
+				$sumIncoming \gets sumIncoming + edgeWeights[(key, succ)]$\;
+			}
+		}
+		\ForEach{Node $pred$ adjacent to $key$ in $G$}{
+			\If{$distanceDict[pred] == d - 1$}{
+				$edgeWeights[(n, pred)] \gets (1 + sumIncoming) * (numShortestPaths[pred] / numShortestPaths[key])$\;
+			}
+		}
+	}
+	\ForEach{Edge $e$ in $edgeWeights$}{
+		$EBC[e] \gets EBC[e] + edgeWeights[e]$\;
+	}
+}
+\ForEach{Edge $e$ in $G.edges$}{
+	$EBC[e] \gets EBC[e] / 2$\;
+}
+\Return{EBC}\;
+\end{algorithm}
+\end{document}

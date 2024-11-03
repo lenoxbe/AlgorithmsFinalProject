@@ -1,6 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from collections import deque
+from random import randrange
 
 def sort_edge(tpl):
     return tuple(sorted(tpl))
@@ -112,10 +113,10 @@ def detect_connected_components(g, all_nodes = {}):
     return components
 
 
-def girvan_newman(g, mod_bound = 0.5):
+def girvan_newman(g, mod_bound = 0.3):
     g2 = g.copy()
     connected_components = detect_connected_components(g2)
-    while modularity(g, connected_components) < mod_bound:
+    while modularity(g, connected_components) < mod_bound and not nx.is_empty(g2):
         calculate_edge_betweenness_centrality(g2)
         try:
             max_edge = max(g2.edges(data=True), key=lambda e: e[2]['betweenness'])
@@ -136,30 +137,16 @@ def girvan_newman(g, mod_bound = 0.5):
     print(connected_components)
     return g2
 
-# G = nx.Graph()
+# G1 = nx.Graph()
 #
-# G.add_nodes_from(["A", "B", "C", "D", "E", "F", "G", "H"])
+# G1.add_nodes_from(["A", "B", "C", "D", "E", "F", "G", "H"])
 #
-# G.add_edges_from([("A", "B"), ("A", "C"), ("A", "D"), ("B", "C"), ("C", "D"), ("D", "E"), ("E", "F"), ("E", "G"), ("E", "H"), ("F", "G"), ("G", "H")])
+# G1.add_edges_from([("A", "B"), ("A", "C"), ("A", "D"), ("B", "I"), ("C", "I"), ("F", "J"), ("E", "J"), ("J", "K"), ("F", "K"), ("D", "I"), ("B", "C"), ("C", "D"), ("D", "E"), ("E", "F"), ("E", "G"), ("E", "H"), ("F", "G"), ("G", "H")])
 #
 # ebc = nx.edge_betweenness_centrality(G)
 # print({k: v*28 for k, v in ebc.items()})
 # nx.set_edge_attributes(G, ebc, "betweenness")
 #
-# calculate_edge_betweenness_centrality(G)
-# edge_labels = nx.get_edge_attributes(G,'betweenness')
-# print(edge_labels)
-# nx.set_edge_attributes(G, edge_labels, "betweenness")
-#
-# pos = nx.spring_layout(G)
-
-# nx.draw(G, pos, with_labels=True)
-# edge_labels = nx.get_edge_attributes(G,'betweenness')
-# nx.draw_networkx_edge_labels(G, pos, edge_labels = edge_labels)
-# plt.show()
-
-
-
 
 
 
@@ -168,36 +155,56 @@ def girvan_newman(g, mod_bound = 0.5):
 def round_dict(d):
     return {k: round(v, 2) for k, v in d.items()}
 
-# G1 = nx.random_partition_graph([20, 30, 40], 0.5, 0.1)
-G1 = nx.fast_gnp_random_graph(100, 0.02)
-# G1 = nx.Graph()
-# G1.add_edges_from([(0, 1), (0, 2), (0, 3), (0, 4), (0, 8), (1, 2), (1, 4), (1, 17), (2, 3), (2, 9), (2, 11), (3, 14), (5, 7), (5, 8), (5, 11), (5, 12), (5, 16), (6, 7), (6, 9), (6, 12), (7, 8), (7, 9), (7, 11), (7, 12), (7, 17), (8, 9), (8, 10), (8, 11), (8, 12), (9, 11), (9, 12), (10, 11), (10, 12), (11, 12), (11, 15), (12, 13), (13, 15), (13, 16), (16, 17)])
+def test(G, mb=0.3, show_ebc=False):
+    G1 = G
+    G2 = girvan_newman(G1, mb)
 
-G2 = girvan_newman(G1, mod_bound = 0.3)
-# G2 = G1.copy()
+    if show_ebc:
+        calculate_edge_betweenness_centrality(G1)
+        edge_labels = round_dict(nx.get_edge_attributes(G1,'betweenness'))
+        nx.set_edge_attributes(G1, edge_labels, "betweenness")
 
+    fig, axes = plt.subplots(1, 2)
+    pos = nx.spring_layout(G1)
+    pos2 = nx.spring_layout(G2, k=0.75)
 
-# Create a figure with two subplots
-fig, axes = plt.subplots(1, 2)
+    nx.draw(G1, pos, ax=axes[0], with_labels=True)
+    nx.draw(G2, pos, ax=axes[1], with_labels=True)
+    # nx.draw(G1, pos, with_labels=True)
 
-# Draw the first graph on the first subplot
-nx.draw(G1, ax=axes[0], with_labels=True)
+    if show_ebc:
+        nx.draw_networkx_edge_labels(G1, pos, ax=axes[0], edge_labels = edge_labels)
 
-# calculate_edge_betweenness_centrality(G2)
-# ebc2 = nx.get_edge_attributes(G2, 'betweenness')
-# nx.set_edge_attributes(G2, ebc2, "betweenness")
-# print(ebc2)
-# pos2 = nx.spring_layout(G2)
-# nx.draw_networkx_edge_labels(G1, pos1, ax=axes[0], edge_labels = round_dict(ebc))
+    plt.show()
 
-# Draw the second graph on the second subplot
-nx.draw(G2, ax=axes[1], with_labels=True)
+def random_community_structure(num_communities, community_sizes, intra_community_connections=0.65, inter_community_connections=0.05, mod_bound=0.4):
+    if type(community_sizes) is tuple:
+        arg1 = [randrange(community_sizes[0], community_sizes[1]) for _ in range(num_communities)]
+    else:
+        arg1 = [community_sizes] * num_communities
 
-# ebc = nx.edge_betweenness_centrality(G1)
-# print({k: v*153 for k, v in ebc.items()})
-# nx.set_edge_attributes(G1, ebc, "betweenness")
-# pos1 = nx.spring_layout(G1)
-# nx.draw_networkx_edge_labels(G2, pos2, ax=axes[1], edge_labels = round_dict(ebc2))
+    arg2 = [[intra_community_connections if i == j else inter_community_connections for i in range(num_communities)] for j in range(num_communities)]
 
-# Show the plot
-plt.show()
+    return nx.generators.community.stochastic_block_model(arg1, arg2)
+
+# Test 1
+# G1 = random_community_structure(5, (4, 10))
+# Test 2
+# G1 = random_community_structure(7, (3, 8), intra_community_connections=0.8)
+# Test 3
+# G1 = random_community_structure(10, 10, intra_community_connections=0.8, inter_community_connections=0.02)
+# Test 4
+# G1 = random_community_structure(3, 50, inter_community_connections=0.02)
+# Test 5
+# G1 = random_community_structure(5, (5, 15))
+# test(G1, 0.5)
+
+# Test 6
+# G1 = nx.fast_gnp_random_graph(100, 0.02)
+# isolated_nodes = list(nx.isolates(G1))
+# G1.remove_nodes_from(isolated_nodes)
+# Test 7
+G1 = nx.fast_gnp_random_graph(20, 0.1)
+isolated_nodes = list(nx.isolates(G1))
+G1.remove_nodes_from(isolated_nodes)
+test(G1, 0.4)
