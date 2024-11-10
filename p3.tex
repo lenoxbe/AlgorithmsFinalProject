@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% \usepackage{amsthm}
+
+\title{Bellman-Ford Algorithm}
+\author{Aaron Frye}
+\date{November 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+The Bellman-Ford algorithm is a method of computing the shortest path from a given source node to each other node in a graph. It is similar to Dijkstra's algorithm in it's function, but has the advantage of being able to handle graphs with negative edge weights. The algorithm can fail to give a correct answer when the graph has negative cycles, as when these are present there will be nodes with no finite shortest path from $s$.
+
+\section{Pseudocode}
+
+\begin{algorithm}
+    \caption{Bellman-Ford algorithm}
+    \textbf{Inputs}: A weighted digraph with negative weights $G(V, E)$, and a start node $s$ from $V$ to compute shortest paths from. \\
+    \textbf{Outputs}: The minimum cost to reach each node from $s$
+    \begin{algorithmic}
+    \For{$n \in G$}
+        \If{$n == s$}
+            \State $n.cost \gets 0$
+        \Else
+            \State $n.cost \gets \infty$
+        \EndIf
+    \EndFor
+
+    \For{$i \gets 0\ to\ |V|-1$}
+        \For{$e(u,v) \in E$}
+            \If{$v.cost < u.cost + e.weight$}
+                \State $v.cost \gets u.cost + e.weight$
+            \EndIf
+        \EndFor
+    \EndFor
+    \end{algorithmic}
+\end{algorithm}
+
+
+\section{Data Structures}
+Our implementation uses a networkx graph as it's only data structure, but many of it's functionality could be easily represented with other more fundamental structures. \\ 
+
+Computing the cost of reaching each node could be implemented as a hash map, which would allow constant time lookup and updating. Similarly, we could store the edges as $(source,\ destination)$ pairs in a simple array, and use a hash map to store edge weights.
+
+
+\section{Intuition of Correctness}
+
+It can be shown that for a weighted digraph with negative weights but no negative cycles, and for a given node $n$, $n$ will have at least one outgoing edge $e$ which will be the optimal path from $n$ to the destination node of $e$. Using this fact, we can prove by induction that with each iteration of our algorithm we will find the optimal cost to reach at least one new node from $s$, \\
+
+Base Case: Using the above fact, we will find that there is at least one outgoing edge $e$ connecting $s$ to some other node $a$ for which $e$ is the optimal path from $s$ to $a$. Clearly $a$ will have it's cost updated to the optimal value.
+
+Inductive Case: Assume that after $k$ iterations we find the optimal cost for some node set of nodes $N = \{n_1,\ n_2,\ ...\ n_m\}$. For each node in this set we know there will be an outgoing edge $e_i$ from $n_i$ to some other node $n_i'$ for which $e_i$ is on the optimal path from $n_i$ to $n'_i$. For any of these $n'_i$, it's optimal path must include an edge from the $e_i$, otherwise our graph would have to include a negative cycle for similar reasoning to the above lemma.
+
+\section{Time Complexity}
+Our algorithm consists of two for loops. The outer loop iterates $V-1$ times, while the inner loop runs $E$ times. Since in the worst case $E$ can be $V^2$, our algorithm should run in $O(V^3)$ time.
+
+\section{Space Complexity}
+Our algorithm needs to keep track of the cost of reaching each node and the weight, destination, and source of each of it's edges. If these are implemented in a hash map as described above, there should only need to be $V$ entries in the cost hash map. There will be $E$ entries in the edge weight hash map, plus the array of $(source,\ destination)$, so our overall space complexity will be $O(V + E)$. Since at worst $E = V^2$ our space complexity is better approximated by $O(V^2)$.
+
+\section{Code}
+
+\section{Results}
+
+\section{Questions for Dr. Javidian}
+\begin{itemize}
+    \item What should the code output? The actual path or is the costs enough?
+    \item How rigorous should my correctness be?
+    \item Can we just use a networkx graph for our data structure?
+\end{itemize}
+
+\section{TODO}
+\begin{itemize}
+    \item Add $\Theta$ case for space complexity, specify number of nodes and number of edges, also do this for space complexity
+    \item Add visuals and explain test cases
+    \item Rework intuition of correctness
+\end{itemize}
+
+\end{document}
