@@ -7,10 +7,55 @@
 
 \begin{document}
 
+\section{Problem 1}
+
+\begin{algorithm}[H]
+\caption{$GreedyInfluenceMaximization(G, activationProbability, trials)$}
+\KwIn{Graph $G$ -- an undirected graph, Float $activationProbability$ -- the probability that a node will spread its influence to a given adjacent node, Int $trials$ -- the number of trials to run for each node in calculating its influence}
+\KwOut{A dictionary object containing nodes as keys with values being the calculated influence of each node}
+$influenceAvg \gets $ new Dictionary\;
+\ForEach{Node $n$ in $G.nodes$}{
+	$influenceAvg[n] \gets 0$\;
+}
+\ForEach{Node $n$ in $G.nodes$}{
+	\For{$\_ \gets 0$ \KwTo $trials$}{
+		$Q \gets $ new Queue\;
+		$Q.enqueue(n)$\;
+		$visited \gets $ empty Set\;
+		\While{$Q$ is not empty}{
+			$curr \gets Q.dequeue()$\;
+			add $curr$ to $visited$\;
+			\ForEach{Node $n1$ adjacent to $n$ in $G$}{
+				$rand \gets $ Random float between 0 and 1\;
+				\If{$rand < activationProbability$ and $n1$ is not in $Q$ and $n1$ is not in $visited$}{
+					$Q.enqueue(n1)$\;
+				}
+			}
+		}
+		$influenceAvg[n] \gets influenceAvg[n] + |visited|$\; 
+	}
+	$influenceAvg[n] \gets influenceAvg[n] / trials$\;
+}
+\Return{$influenceAvg$}\;
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{$HighDegreeHeuristicInfluenceMaximization(G)$}
+\KwIn{Graph $G$ -- an undirected graph}
+\KwOut{A dictionary object containing nodes as keys with values being the calculated influence of each node}
+$influence \gets $ new Dictionary\;
+\ForEach{Node $n$ in $G.nodes$}{
+	$influence[n] \gets G.degree(n)$\;
+}
+\Return{$influence$}\;
+\end{algorithm}
+
+\section{Problem 2}
+
 \begin{algorithm}[H]
 \caption{$GirvanNewman(G, modBound)$}
 \KwIn{Graph $G$ -- an undirected graph, Float $modBound$ -- a bound for the modularity so the algorithm knows when it is complete}
-\KwOut{An undirected graph composed of all vertices and some edges of G, likely with more connected components representing communities.}
+\KwOut{An undirected graph composed of all vertices and some edges of G, likely with more connected components representing communities}
 
 $G2 \gets copy(G)$\;
 $connectedComponents \gets DetectConnectedComponents(G, G.edges)$\;
@@ -143,4 +188,7 @@ $EBC \gets $ empty dictionary\;
 }
 \Return{EBC}\;
 \end{algorithm}
+
+
+
 \end{document}
