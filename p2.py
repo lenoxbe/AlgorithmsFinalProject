@@ -143,10 +143,10 @@ def girvan_newman(g, mod_bound = 0.3):
 #
 # G1.add_edges_from([("A", "B"), ("A", "C"), ("A", "D"), ("B", "I"), ("C", "I"), ("F", "J"), ("E", "J"), ("J", "K"), ("F", "K"), ("D", "I"), ("B", "C"), ("C", "D"), ("D", "E"), ("E", "F"), ("E", "G"), ("E", "H"), ("F", "G"), ("G", "H")])
 #
-# ebc = nx.edge_betweenness_centrality(G)
+# ebc = nx.edge_betweenness_centrality(G1)
 # print({k: v*28 for k, v in ebc.items()})
-# nx.set_edge_attributes(G, ebc, "betweenness")
-#
+# nx.set_edge_attributes(G1, ebc, "betweenness")
+
 
 
 
@@ -204,7 +204,11 @@ def random_community_structure(num_communities, community_sizes, intra_community
 # isolated_nodes = list(nx.isolates(G1))
 # G1.remove_nodes_from(isolated_nodes)
 # Test 7
+# G1 = nx.fast_gnp_random_graph(40, 0.1)
+# isolated_nodes = list(nx.isolates(G1))
+# G1.remove_nodes_from(isolated_nodes)
+# Test 8
 G1 = nx.fast_gnp_random_graph(20, 0.1)
 isolated_nodes = list(nx.isolates(G1))
 G1.remove_nodes_from(isolated_nodes)
-test(G1, 0.4)
+test(G1, show_ebc=True)

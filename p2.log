@@ -1,0 +1,523 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.8.19)  10 NOV 2024 18:02
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**p2.tex
+(./p2.tex
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22>
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count193
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip50
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
+\c@checkoddpage=\count194
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip51
+\skiplinenumber=\skip52
+\skiprule=\skip53
+\skiphlne=\skip54
+\skiptext=\skip55
+\skiplength=\skip56
+\algomargin=\skip57
+\skipalgocfslide=\skip58
+\algowidth=\dimen143
+\inoutsize=\dimen144
+\inoutindent=\dimen145
+\interspacetitleruled=\dimen146
+\interspacealgoruled=\dimen147
+\interspacetitleboxruled=\dimen148
+\algocf@ruledwidth=\skip59
+\algocf@inoutbox=\box51
+\algocf@inputbox=\box52
+\AlCapSkip=\skip60
+\AlCapHSkip=\skip61
+\algoskipindent=\skip62
+\algocf@nlbox=\box53
+\algocf@hangingbox=\box54
+\algocf@untilbox=\box55
+\algocf@skipuntil=\skip63
+\algocf@capbox=\box56
+\algocf@lcaptionbox=\skip64
+\algoheightruledefault=\skip65
+\algoheightrule=\skip66
+\algotitleheightruledefault=\skip67
+\algotitleheightrule=\skip68
+\c@algocfline=\count195
+\c@algocfproc=\count196
+\c@algocf=\count197
+\algocf@algoframe=\box57
+\algocf@algobox=\box58
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count198
+\c@ALG@rem=\count199
+\c@ALG@nested=\count266
+\ALG@tlm=\skip69
+\ALG@thistlm=\skip70
+\c@ALG@Lnr=\count267
+\c@ALG@blocknr=\count268
+\c@ALG@storecount=\count269
+\c@ALG@tmpcounter=\count270
+\ALG@tmplength=\skip71
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count271
+\l__pdf_internal_box=\box59
+) (./p2.aux)
+\openout1 = `p2.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+
+(/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count272
+\scratchdimen=\dimen149
+\scratchbox=\box60
+\nofMPsegments=\count273
+\nofMParguments=\count274
+\everyMPshowfont=\toks17
+\MPscratchCnt=\count275
+\MPscratchDim=\dimen150
+\MPnumerator=\count276
+\makeMPintoPDFobject=\count277
+\everyMPtoPDFconversion=\toks18
+) (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 14.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 14.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 14.
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 25.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 25.
+[1
+
+{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3]
+Overfull \vbox (111.29991pt too high) has occurred while \output is active []
+
+
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
+
+ []
+
+<test20.png, id=27, 475.7775pt x 493.845pt>
+File: test20.png Graphic file (type png)
+<use test20.png>
+Package pdftex.def Info: test20.png  used on input line 182.
+(pdftex.def)             Requested size: 214.09789pt x 222.22818pt.
+<test1.png, id=29, 1262.7175pt x 664.4825pt>
+File: test1.png Graphic file (type png)
+<use test1.png>
+Package pdftex.def Info: test1.png  used on input line 188.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+[6 <./test20.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+
+ []
+
+[7 <./test1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 199--200
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--204
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 205--206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--208
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+[8]
+Overfull \hbox (2.7784pt too wide) in paragraph at lines 216--217
+\OT1/cmr/m/n/10 rithm it-self is al-ready keep-ing track of the graph and the c
+on-nected components---
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--219
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+
+ []
+
+[9]
+Overfull \hbox (27.74675pt too wide) in paragraph at lines 424--424
+[]    \OT1/cmtt/m/n/10 dists = sorted(dist_dict.items(), key=lambda x: x[1], re
+verse=True)[] 
+ []
+
+
+Overfull \hbox (1.49698pt too wide) in paragraph at lines 424--424
+[]                \OT1/cmtt/m/n/10 sum_incoming += edge_weights[sort_edge((n, s
+ucc))][] 
+ []
+
+
+Overfull \hbox (190.49533pt too wide) in paragraph at lines 424--424
+[]                \OT1/cmtt/m/n/10 edge_weights[sort_edge((n, pred))] = (1 + su
+m_incoming) * (sp_dict[pred] / sp_dict[n])[] 
+ []
+
+
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 424--424
+[]        \OT1/cmtt/m/n/10 edge_weights = calculate_edge_weights(g, dist_dict, 
+sp_dict)[] 
+ []
+
+[10] [11]
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 424--424
+[]    \OT1/cmtt/m/n/10 while modularity(g, connected_components) < mod_bound an
+d not nx.is_empty(g2):[] 
+ []
+
+
+Overfull \hbox (85.49625pt too wide) in paragraph at lines 424--424
+[]            \OT1/cmtt/m/n/10 max_edge = max(g2.edges(data=True), key=lambda e
+: e[2]['betweenness'])[] 
+ []
+
+
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 424--424
+[]        \OT1/cmtt/m/n/10 new_components = detect_connected_components(g2, cur
+r_component)[] 
+ []
+
+
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 424--424
+[]        \OT1/cmtt/m/n/10 edge_labels = round_dict(nx.get_edge_attributes(G1,'
+betweenness'))[] 
+ []
+
+[12]
+Overfull \hbox (95.99615pt too wide) in paragraph at lines 424--424
+[]        \OT1/cmtt/m/n/10 nx.draw_networkx_edge_labels(G1, pos, ax=axes[0], ed
+ge_labels = edge_labels)[] 
+ []
+
+
+Overfull \hbox (431.99323pt too wide) in paragraph at lines 424--424
+[]\OT1/cmtt/m/n/10 def random_community_structure(num_communities, community_si
+zes, intra_community_connections=0.65, inter_community_connections=0.05, mod_bo
+und=0.4):[] 
+ []
+
+
+Overfull \hbox (169.49551pt too wide) in paragraph at lines 424--424
+[]        \OT1/cmtt/m/n/10 arg1 = [randrange(community_sizes[0], community_size
+s[1]) for _ in range(num_communities)][] 
+ []
+
+
+Overfull \hbox (437.24318pt too wide) in paragraph at lines 424--424
+[]    \OT1/cmtt/m/n/10 arg2 = [[intra_community_connections if i == j else inte
+r_community_connections for i in range(num_communities)] for j in range(num_com
+munities)][] 
+ []
+
+
+Overfull \hbox (17.24684pt too wide) in paragraph at lines 424--424
+[]    \OT1/cmtt/m/n/10 return nx.generators.community.stochastic_block_model(ar
+g1, arg2)[] 
+ []
+
+
+Overfull \hbox (59.24648pt too wide) in paragraph at lines 424--424
+[]\OT1/cmtt/m/n/10 # G1 = random_community_structure(7, (3, 8), intra_community
+_connections=0.8)[] 
+ []
+
+
+Overfull \hbox (221.99506pt too wide) in paragraph at lines 424--424
+[]\OT1/cmtt/m/n/10 # G1 = random_community_structure(10, 10, intra_community_co
+nnections=0.8, inter_community_connections=0.02)[] 
+ []
+
+
+Overfull \hbox (43.49661pt too wide) in paragraph at lines 424--424
+[]\OT1/cmtt/m/n/10 # G1 = random_community_structure(3, 50, inter_community_con
+nections=0.02)[] 
+ []
+
+[13]
+<test3.png, id=60, 1262.7175pt x 664.4825pt>
+File: test3.png Graphic file (type png)
+<use test3.png>
+Package pdftex.def Info: test3.png  used on input line 433.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+
+Overfull \hbox (147.22221pt too wide) in paragraph at lines 435--436
+$\OT1/cmr/m/n/10 [\OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 23\OML/cmm/m/it/10 ; \OT1/c
+mr/m/n/10 24\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 25\OML/cmm/m/it/10 ; \OT1/cmr/m/
+n/10 26\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 27\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 
+28\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 8\OML/
+cmm/m/it/10 ; \OT1/cmr/m/n/10 9\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 10\OML/cmm/m/
+it/10 ; \OT1/cmr/m/n/10 11\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 12\OML/cmm/m/it/10
+ ; \OT1/cmr/m/n/10 13\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OT
+1/cmr/m/n/10 0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OT1/cmr/m
+/n/10 2\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 3\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 4
+\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 5\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 6\OML/cm
+m/m/it/10 ; \OT1/cmr/m/n/10 7\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n
+/10 f\OT1/cmr/m/n/10 32\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 33\OML/cmm/m/it/10 ; 
+\OT1/cmr/m/n/10 29\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 30\OML/cmm/m/it/10 ; \OT1/
+cmr/m/n/10 31\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OT1/cmr/m/
+n/10 14\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 15\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 
+16\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 17\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 18\OM
+L/cmm/m/it/10 ; \OT1/cmr/m/n/10 19\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 20\OML/cmm
+/m/it/10 ; \OT1/cmr/m/n/10 21\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 22\OMS/cmsy/m/n
+/10 g\OT1/cmr/m/n/10 ]$ 
+ []
+
+<test4.png, id=61, 1262.7175pt x 664.4825pt>
+File: test4.png Graphic file (type png)
+<use test4.png>
+Package pdftex.def Info: test4.png  used on input line 438.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+[14 <./test3.png>]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 4
+40.
+ (/usr/local/texlive/2023/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2022/07/10 v2.5l Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 440.
+<test5.png, id=66, 1262.7175pt x 664.4825pt>
+File: test5.png Graphic file (type png)
+<use test5.png>
+Package pdftex.def Info: test5.png  used on input line 443.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+ [15 <./test4.png>]
+<test6.png, id=71, 1262.7175pt x 664.4825pt>
+File: test6.png Graphic file (type png)
+<use test6.png>
+Package pdftex.def Info: test6.png  used on input line 448.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+ [16 <./test5.png>]
+<test7.png, id=76, 1262.7175pt x 664.4825pt>
+File: test7.png Graphic file (type png)
+<use test7.png>
+Package pdftex.def Info: test7.png  used on input line 453.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+ [17 <./test6.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 455--458
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 455--458
+
+ []
+
+<test8.png, id=81, 1262.7175pt x 664.4825pt>
+File: test8.png Graphic file (type png)
+<use test8.png>
+Package pdftex.def Info: test8.png  used on input line 463.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+[18 <./test7.png>]
+<test9.png, id=86, 1262.7175pt x 664.4825pt>
+File: test9.png Graphic file (type png)
+<use test9.png>
+Package pdftex.def Info: test9.png  used on input line 468.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+ [19 <./test8.png>]
+<test10.png, id=92, 1262.7175pt x 664.4825pt>
+File: test10.png Graphic file (type png)
+<use test10.png>
+Package pdftex.def Info: test10.png  used on input line 473.
+(pdftex.def)             Requested size: 568.21764pt x 299.01436pt.
+ [20 <./test9.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 475--478
+
+ []
+
+[21 <./test10.png>] (./p2.aux) ) 
+Here is how much of TeX's memory you used:
+ 2948 strings out of 476025
+ 49044 string characters out of 5790017
+ 1869388 words of memory out of 5000000
+ 23396 multiletter control sequences out of 15000+600000
+ 517366 words of font info for 49 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 57i,21n,62p,1484b,580s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2023/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr12.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr17.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr7.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmti10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmtt10.pfb>
+Output written on p2.pdf (21 pages, 1122142 bytes).
+PDF statistics:
+ 148 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+
