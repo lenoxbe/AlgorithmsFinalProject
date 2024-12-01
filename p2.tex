@@ -27,7 +27,7 @@ The algorithm goes as follows: the edge betweenness centrality is calculated for
 \KwOut{An undirected graph composed of all vertices and some edges of G, likely with more connected components representing communities}
 
 $G2 \gets copy(G)$\;
-$connectedComponents \gets DetectConnectedComponents(G, G.edges)$\;
+$connectedComponents \gets DetectConnectedComponents(G, G.nodes)$\;
 \While{$Modularity(G, connectedComponents) < modBound$}{
     $betweennessCentrality \gets CalculateEdgeBetweennessCentrality(G2)$\;
     $maxEdge \gets $ edge with max betweenness centrality in $G2$\;
