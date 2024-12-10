@@ -1,50 +1,67 @@
 import random
 import networkx as nx
 import matplotlib.pyplot as plt
+import scipy
 
-def Ramsey(G):
-    adjacency = G.adj
-    if len(G.nodes) == 0:
+def Ramsey(G, sG):
+    # O(1)
+    if len(sG) == 0:
         return (nx.Graph(), nx.Graph())
-    v = random.choice(list(G.nodes))
-    v_neighborhood = G.copy()
-    for n1 in G.nodes:
-        if n1 not in adjacency[v]:
-            v_neighborhood.remove_node(n1)
-    v_antineighborhood = G.copy()
-    v_antineighborhood.remove_node(v)
-    for n1 in G.nodes:
-        if n1 in adjacency[v]:
-            v_antineighborhood.remove_node(n1)
-    C1, I1 = Ramsey(v_neighborhood)
-    C2, I2 = Ramsey(v_antineighborhood)
-    if C1.number_of_nodes() + 1 > C2.number_of_nodes():
-        c_set = set(C1.nodes).union({v})
+    
+    # O(1)
+    v = sG.pop()
+    adj = G.adj[v]
+
+    # Neighbors
+    # O(n)
+    N = sG.copy()
+    # Non-Neighbors
+    # O(n)
+    NC = sG.copy()
+
+    # Iterate through the nodes in the subgraph, if they are adjacent to v remove them from
+    # the non-neighbor set, and vice versa for the neighbor set.
+    for u in sG:
+        if u in adj:
+            NC.remove(u)
+        else:
+            N.remove(u)
+            
+    # Recursive calls
+    C1, I1 = Ramsey(G, N)
+    C2, I2 = Ramsey(G, NC)
+
+    # All O(1)
+    if len(C1.nodes) + 1 > len(C2.nodes):
+        C = C1
+        C.add_node(v)
     else:
-        c_set = set(C2.nodes)
+        C = C2
+
     if I2.number_of_nodes() + 1 > I1.number_of_nodes():
-        i_set = set(I2.nodes).union({v})
+        I = I2
+        I.add_node(v)
     else:
-        i_set = set(I1.nodes)
-    C = G.copy()
-    for n1 in G.nodes:
-        if n1 not in c_set:
-            C.remove_node(n1)
-    I = G.copy()
-    for n1 in G.nodes:
-        if n1 not in i_set:
-            I.remove_node(n1)
+        I = I1
+
     return C, I
+
+
+
+
+
+
+
 
 # SEND A COPY OF G AS THE ARGUMENT
 def clique_removal(G):
     Cs, Is = [], []
-    C, I = Ramsey(G)
+    C, I = Ramsey(G,set(G))
     Cs.append(C)
     Is.append(I)
     while G.number_of_nodes() != 0:
         G.remove_nodes_from(C.nodes)
-        C, I = Ramsey(G)
+        C, I = Ramsey(G,set(G))
         Cs.append(C)
         Is.append(I)
     return max(Is, key=lambda x: x.number_of_nodes())
@@ -54,10 +71,13 @@ def max_clique(G):
     max_clique = clique_removal(G)
     return set(max_clique.nodes)
 
+# Both test1 and test2 have a call to plt.show() at the end, uncomment this to see a visualization
+# of the algorithms output.
 
+# Test function for Ramsey algorithm without clique removal
 def test(G):
     G1 = G.copy()
-    C, I = Ramsey(G1)
+    C, I = Ramsey(G1, set(G1))
 
     fig, axes = plt.subplots(1, 2)
     pos = nx.spring_layout(G1, k=0.05)
@@ -66,15 +86,18 @@ def test(G):
     axes[0].set_title("C")
     axes[1].set_title("I")
 
-    nx.draw(G1, pos, ax=axes[0], node_color=["red" if node in C.nodes else "blue" for node in G.nodes], with_labels=True)
-    nx.draw(G1, pos, ax=axes[1], node_color=["red" if node in I.nodes else "blue" for node in G.nodes], with_labels=True)
+    nx.draw(G1, pos, ax=axes[0], node_color=["#FF6961" if node in C.nodes else "#87CEEB" for node in G.nodes], with_labels=True)
+    nx.draw(G1, pos, ax=axes[1], node_color=["#FF6961" if node in I.nodes else "#87CEEB" for node in G.nodes], with_labels=True)
     # nx.draw(G1, pos, with_labels=True)
 
     nx.draw_networkx_labels(G1, pos, ax=axes[0])
     nx.draw_networkx_labels(G1, pos, ax=axes[1])
 
+    print(f"Clique found: {len(C)} nodes")
+    print(f"Independent set found: {len(I)} nodes")
     plt.show()
 
+# Test function for Ramsey with clique removal
 def test2(G):
     G1 = G.copy()
     C = max_clique(G)
@@ -82,19 +105,20 @@ def test2(G):
     pos = nx.spring_layout(G1)
 
 
-    nx.draw(G1, pos, node_color=["red" if node in C else "blue" for node in G.nodes], with_labels=True)
+    nx.draw(G1, pos, node_color=["#FF6961" if node in C else "#87CEEB" for node in G.nodes], with_labels=True)
 
     nx.draw_networkx_labels(G1, pos)
 
+    print(f"Clique found: {len(C)} nodes")
     plt.show()
 
-# G1 = nx.complete_graph(5)
-# G1.add_node(5)
-# G1.add_node(6)
-G1 = nx.fast_gnp_random_graph(50, 0.3)
-G2 = nx.complete_graph(8)
-G3 = nx.union(G1, G2, rename=("G", "H"))
-G3.add_edges_from([("G" + str(random.randint(0,49)), "H" + str(random.randint(0,7))) for _ in range(50)])
+# Generate random graph, then run test1 and test2
+n = 10
+c = 0.5
+G1 = nx.fast_gnp_random_graph(n, c)
 
-test2(G3)
-test(G3)
+print(f"For graph with {n} nodes and {c} chance of nodes being connected,\n")
+print("Without clique removal")
+test(G1)
+print("\nWith clique removal")
+test2(G1)
